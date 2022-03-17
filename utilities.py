@@ -77,7 +77,7 @@ def extractNestedObjectData(dataframe, column):
     for (index, key) in enumerate(keys):
         newColIdx = columnIndex+index+1
         newColName = column + "_" + key
-        newColData = dataframe[column].map(lambda val: val[key])
+        newColData = dataframe[column].map(lambda val: None if val == None else val[key])
         dataframe.insert(loc=newColIdx, column=newColName, value=newColData)
 
     # Eliminates the original column
