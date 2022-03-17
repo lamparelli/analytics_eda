@@ -1,3 +1,4 @@
+from array import array
 from google.cloud import bigquery
 import os
 import errno
@@ -41,17 +42,23 @@ def retrieveBigQueryData(bigQueryTableId, rowNumberLimit = None):
 Returns a list of strings containing the names of the columns with dict-type data
 """
 def getListOfObjectColumns(dataframe):
-    return list(filter(lambda col: isNestedObjectSeries(dataframe[col]), dataframe.columns))
+    return list(filter(lambda col: getSeriesDataType(dataframe[col]) == dict, dataframe.columns))
 
 """
-Returns True if the first non-empty value of a series is a type dict, False otherwise
+Returns a list of strings containing the names of the columns with array-type data
 """
-def isNestedObjectSeries(series):
+def getListOfArrayColumns(dataframe):
+    return list(filter(lambda col: getSeriesDataType(dataframe[col]) == array, dataframe.columns))
+
+"""
+Returns the type of the first non-empty data in a pandas series (works if the series doesn't contain multiple data types)
+"""
+def getSeriesDataType(series):
     sampleItemIndex = series.first_valid_index()
     if (sampleItemIndex is None):
         # In case of series with all empty values
-        return False
-    return type(series[sampleItemIndex]) == dict
+        return None
+    return type(series[sampleItemIndex])
 
 """
 Creates a new column for every property in the nested objects, and deletes the original object column
