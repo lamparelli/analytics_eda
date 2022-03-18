@@ -48,7 +48,7 @@ def getListOfObjectColumns(dataframe):
 Returns a list of strings containing the names of the columns with array-type data
 """
 def getListOfArrayColumns(dataframe):
-    return list(filter(lambda col: getSeriesDataType(dataframe[col]) == array, dataframe.columns))
+    return list(filter(lambda col: getSeriesDataType(dataframe[col]) == list, dataframe.columns))
 
 """
 Returns the type of the first non-empty data in a pandas series (works if the series doesn't contain multiple data types)
