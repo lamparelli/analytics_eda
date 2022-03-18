@@ -61,20 +61,29 @@ def getSeriesDataType(series):
     return type(series[sampleItemIndex])
 
 """
+Returns the list of properties stored inside objects in an object-type column
+"""
+def extractNestedColumnNames(dataframe, objColumn):
+    # Finds the first non-empty data in the column
+    colData = dataframe[objColumn]
+    sampleDataIndex = colData.first_valid_index()
+    
+    # Returns if the column is empty
+    if (sampleDataIndex is None):
+        return []
+    sampleData = colData[sampleDataIndex]
+    
+    # Returns the list of keys in the first non-empty object of the column (works if every object has the same keys)
+    return list(sampleData.keys())
+
+
+"""
 Creates a new column for every property in the nested objects, and deletes the original object column
 """
 def extractNestedObjectData(dataframe, column):
-    # Extracts to list of keys in the first non-empty object of the column (works if every object has the same keys)
-    colData = dataframe[column]
-    sampleDataIndex = colData.first_valid_index()
-    if (sampleDataIndex is None):
-        return
-    sampleData = colData[sampleDataIndex]
-    keys = list(sampleData.keys())
-
     # Creates a new column for each property in the objects
     columnIndex = list(dataframe.columns).index(column)
-    for (index, key) in enumerate(keys):
+    for (index, key) in enumerate(extractNestedColumnNames(dataframe, column)):
         newColIdx = columnIndex+index+1
         newColName = column + "_" + key
         newColData = dataframe[column].map(lambda val: None if val == None else val[key])
