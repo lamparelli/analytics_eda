@@ -1,16 +1,14 @@
-from array import array
 from google.cloud import bigquery
 import os
 import errno
 
-bigQueryTokenFileName = "bq_key.json"
-
 """
 Returns a dataframe containing the BigQuery table data
 """
-def retrieveBigQueryData(bigQueryTableId, rowNumberLimit = None):
+def retrieveBigQueryData(bigQueryTokenFileName, bigQueryTableId, rowNumberLimit = None):
     # Checks if the token file exists
     if (not os.path.exists(bigQueryTokenFileName)):
+        print("BigQuery token file not found")
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), bigQueryTokenFileName)    
 
     # Sets the BigQuery access token as an os environment variable

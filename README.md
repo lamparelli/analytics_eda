@@ -1,12 +1,12 @@
-# Descrizione progetto
+# Project description
 
-Progetto di Explorative Data Analysis su dati sample di Google Analytics, provenienti da Google BigQuery
+Explorative Data Analysis project on a Google Analytics data sample
 
 # Config
 
-## Librerie Python utilizzate
+## Python libraries
 
-Nel progetto è presente l'environment conda. Sono state installate le seguenti librerie, in versione latest in fase di progetto; si riportano qui le versioni per documentazione.
+The project contains the Conda environment. The following libraries were installed in the environment.
 
 ```
 numpy 1.22.3
@@ -20,19 +20,6 @@ pyarrow 7.0.0
 ipykernel 6.9.2
 ```
 
-## Config BigQuery
+## BigQuery access
 
-Per effettuare il download dei dati di BigQuery occorre scaricare il token di accesso all'account, seguendo questi passi:
-- Creare account
-- Nel progetto di default, creare un dataset
-- Nel dataset creato, creare una tabella, impostando la fonte di dati (es. un csv)
-- Andare dal menu laterale in API and Services -> Credentials
-- Premere Create credentials -> Service account
-- Impostare un nome a scelta (es. "mio_nome_service_account"), e premere continua
-- Nella schermata successiva, come ruolo, impostare BigQuery Admin
-- Premere continua e salva
-- Dalla schermata risultante, in basso, clickare su mio_nome_service_account
-- Nella pagina di mio_nome_service_account, andare su Keys nel menu
-- Premere Add key -> Premere Create new key -> Lasciare default JSON -> Confermare
-- Rinominare il file "bq_key.json"
-- Inserire il file nella root di progetto
+The ```eda.html``` file contains the instructions to setup the BigQuery account for API access
