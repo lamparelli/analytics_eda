@@ -14568,19 +14568,15 @@ a.anchor-link {
 <p>To read data from a BigQuery table, we need to configure BigQuery for API access and download the token file that grants permissions.</p>
 <p>In order to do so, we need to execute the following steps:</p>
 <ol>
-<li>Account setup</li>
-</ol>
-<ul>
+<li>Account setup<ul>
 <li>Create a BigQuery account (<a href="https://cloud.google.com/bigquery">here</a>)</li>
 <li>Access the BigQuery console</li>
 <li>Select the default project</li>
 <li>Create a dataset</li>
 <li>Create a table inside the dataset (choose the desired data source; for example CSV, Google Analytics, ...)</li>
 </ul>
-<ol>
-<li>Add a dataset for this specific notebook</li>
-</ol>
-<ul>
+</li>
+<li>Add a dataset for this specific notebook<ul>
 <li>This code is based on the Google Analytics sample dataset contained in BigQuery </li>
 <li>Click on the three dots near <code>Explorer</code> -&gt; Click on <code>Add data</code></li>
 <li>Click on <code>Explore the public data sources</code></li>
@@ -14589,10 +14585,8 @@ a.anchor-link {
 <li>Double-Click on <code>bigquery-public-data</code> -&gt; Double-Click on the <code>google-analytics-sample</code> dataset -&gt; Click on the <code>ga_sessions_</code> table </li>
 <li>Click on <code>Copy</code> -&gt; Select the default project -&gt; Enter the desired dataset for copying -&gt; Enter the desired table for copying</li>
 </ul>
-<ol>
-<li>Configure the BigQuery project to be accessed via API</li>
-</ol>
-<ul>
+</li>
+<li>Configure the BigQuery project to be accessed via API<ul>
 <li>Click on the left sidebar menu -&gt; Click on <code>API and Services</code> -&gt; Click on <code>Credentials</code></li>
 <li>Click on <code>Create credentials</code> -&gt; Click on <code>Service account</code></li>
 <li>Insert the desired name (for example <code>my_service_account_name</code>), and press <code>Continue</code></li>
@@ -14603,6 +14597,8 @@ a.anchor-link {
 <li>Rename the downloaded file as <code>bigquery_token.json</code></li>
 <li>Move the file in the same folder as this notebook</li>
 </ul>
+</li>
+</ol>
 
 </div>
 </div>
