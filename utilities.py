@@ -15,7 +15,8 @@ def retrieveBigQueryData(bigQueryTokenFileName, bigQueryTableId, rowNumberLimit 
     credentials_path = os.path.abspath(bigQueryTokenFileName)
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
     
-    # Sets the table id in the proper format for the BigQuery API
+    # BigQuery table IDs are in the "project_id:dataset_id.table_id" format
+    # BigQuery query language requires the "project_id.dataset_id.table_id" format 
     bigQueryTableId = bigQueryTableId.replace(":", ".")
 
     # Defines the query
