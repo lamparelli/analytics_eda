@@ -6,7 +6,9 @@ Explorative Data Analysis project on a Google Analytics data sample
 
 ## Python libraries
 
-The project contains the Conda environment. The following libraries were installed in the environment.
+The project contains the Conda ```dsenv.yaml``` environment file with the required libraries. 
+
+The following libraries were installed in the environment.
 
 ```
 numpy 1.22.3
